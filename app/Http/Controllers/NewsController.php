@@ -12,7 +12,9 @@ class NewsController extends Controller
   }
 
   public function show($id){
-    return News::with('Topic')->findOrFail($id);
+    $news = News::with('Topic')->find($id);
+    if ($news) return $news;
+    return "Not Found";
   }
 
   public function store(Request $request){
