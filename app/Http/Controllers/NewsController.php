@@ -11,6 +11,10 @@ class NewsController extends Controller
     return News::with('Topic')->get();
   }
 
+  public function show($id){
+    return News::findOrFail($id);
+  }
+
   public function store(Request $request){
     foreach ($request->topic_id as $topicId) {
       if (!Topic::find($topicId)) return "Topic Is Invalid";

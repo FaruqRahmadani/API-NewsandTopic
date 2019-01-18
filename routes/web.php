@@ -17,5 +17,6 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'news'], function () use ($router) {
   $router->get('', 'NewsController@index');
+  $router->get('{id}', 'NewsController@show');
   $router->post('', 'NewsController@store');
 });
