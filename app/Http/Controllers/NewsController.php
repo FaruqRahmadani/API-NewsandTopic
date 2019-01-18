@@ -23,4 +23,16 @@ class NewsController extends Controller
     $news->Topic()->sync($request->topic_id);
     return "$request->title is success to submit";
   }
+
+  public function update($id, Request $request){
+    foreach ($request->topic_id as $topicId) {
+      if (!Topic::find($topicId)) return "Topic Is Invalid";
+    }
+    $news = News::findOrFail($id);
+    $news = $news->fill($request->all());
+    $news->save();
+    $news->Topic()->sync($request->topic_id);
+    if ($news) return "success";
+    return "some error";
+  }
 }
