@@ -35,4 +35,11 @@ class NewsController extends Controller
     if ($news) return "success";
     return "some error";
   }
+
+  public function delete($id){
+    $news = News::findOrFail($id);
+    $news->delete();
+    if ($news) return "success";
+    return "some error";
+  }
 }
