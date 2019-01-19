@@ -8,5 +8,13 @@ class Topic extends Model
 {
   protected $table = 'topic';
 
-  protected $hidden = ['created_at', 'pivot', 'updated_at', 'id'];
+  protected $hidden = ['pivot'];
+
+  public function News(){
+    return $this->belongsToMany('App\News');
+  }
+
+  public function getNewsCountAttribute(){
+    return $this->News()->count();
+  }
 }

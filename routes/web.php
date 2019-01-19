@@ -23,3 +23,11 @@ $router->group(['prefix' => 'news'], function () use ($router) {
   $router->put('{id}', 'NewsController@update');
   $router->delete('{id}', 'NewsController@delete');
 });
+
+$router->group(['prefix' => 'topic'], function () use ($router) {
+  $router->get('', 'TopicController@index');
+  $router->get('{id}', 'TopicController@show');
+  $router->post('', 'TopicController@store');
+  $router->put('{id}', 'TopicController@update');
+  $router->delete('{id}', 'TopicController@delete');
+});
