@@ -11,6 +11,15 @@ class NewsController extends Controller
     return News::with('Topic')->get();
   }
 
+  public function filter($filter){
+    $news = News::with('Topic');
+    if (strtolower($filter) == 'draft') $news->draft();
+    elseif (strtolower($filter) == 'publish') $news->publish();
+    elseif (strtolower($filter) == 'deleted') $news->deleted();
+    else return "Error";
+    return $news->get();
+  }
+
   public function show($id){
     $news = News::with('Topic')->find($id);
     if ($news) return $news;
