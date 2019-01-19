@@ -30,4 +30,12 @@ class TopicController extends Controller
     if ($topic) return "Success";
     return "Error";
   }
+
+  public function delete($id){
+    $topic = Topic::find($id);
+    if (!$topic) return "Not Found";
+    $topic = $topic->delete();
+    if ($topic) return "Success";
+    return "Error";
+  }
 }
