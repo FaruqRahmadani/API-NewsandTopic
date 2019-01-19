@@ -10,7 +10,7 @@ class News extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['title', 'content'];
+  protected $fillable = ['title', 'content', 'publish_at'];
 
   public function Topic(){
     return $this->belongsToMany('App\Topic', 'news_topic');
