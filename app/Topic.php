@@ -10,6 +10,8 @@ class Topic extends Model
 
   protected $hidden = ['pivot'];
 
+  protected $fillable = ['name'];
+
   public function News(){
     return $this->belongsToMany('App\News');
   }
